@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>calorias</title>
+    <!-- CSS only 
+    <link rel="stylesheet" href="css/estilo.css">-->
+    <link rel="stylesheet" type="text/css" href="css/style.css">
+  
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.6.3/css/all.css">
+</head>
+<body>
+    <div class="container ">
+        <!--<h1> Busca tu alimento ...</h1>-->
+        <input type="text" id="formulario" class="buscar_texto" placeholder="Busca tu alimento...">
+        <div class="btn" id="boton"><i class="fa fa-search"></i></div>
+        <ul id="resultado"></ul>
+    </div>
+
+  
+
+
+    <script>
+
+        const productos=[
+            {nombre: 'Platanos', valor: 89},
+            {nombre: 'Pera', valor: 57},
+            {nombre: 'Manzana', valor: 52},
+            {nombre: 'Mango', valor: 60},
+            {nombre: 'Aguacate', valor: 160 },
+            {nombre: 'Fresa', valor: 32},
+            {nombre: 'Uva', valor: 67},
+            {nombre: 'Tortilla maiz', valor: 218},
+            {nombre: 'Tortilla harina', valor: 287},
+            {nombre: 'Galletas oreo', valor: 476},
+            {nombre: 'Galletas gamesa', valor: 393},
+            {nombre: 'COCA-COLA', valor: 42},
+            {nombre: 'Helado NUTRISA', valor: 121},
+            {nombre: 'Papas Sabritas', valor: 541},
+            {nombre: 'Avena', valor: 389},
+            {nombre: 'Claras de huevo', valor: 49},
+            {nombre: 'Huevo', valor: 84},
+            {nombre: 'Pechuga', valor: 187},
+            {nombre: 'Bisteck', valor: 252},
+            {nombre: 'Aceite', valor: 884},
+            {nombre: 'Arroz', valor: 130},
+            {nombre: 'Atun', valor: 73},
+            {nombre: 'Sardina', valor: 208},
+            {nombre: 'Platanos', valor: 89},
+            {nombre: 'Agua', valor: 0},
+            {nombre: 'Bolillo', valor: 197},
+            {nombre: 'Pan dulce', valor: 372},
+            {nombre: 'Leche', valor: 35},
+            {nombre: 'Lentejas', valor: 85},
+            {nombre: 'Carne de puerco', valor: 330},
+            {nombre: 'Gelatina', valor: 57},
+            {nombre: 'Brocoli', valor: 54},
+            {nombre: 'Chicharos', valor: 84},
+            {nombre: 'Tostadas', valor: 468},
+            {nombre: 'Sal', valor: 0},
+            {nombre: 'Maiz', valor: 95},
+            {nombre: 'Cacahuate', valor: 567},
+            {nombre: 'Nuez', valor: 674},
+            {nombre: 'Chile verde', valor: 260},
+            {nombre: 'Tortilla', valor: 180},
+            {nombre: 'Nopal', valor: 16},
+            {nombre: 'Lechuga', valor: 15},
+            {nombre: 'Zanahoria', valor: 34},
+            
+        ]
+
+
+        const formulario = document.querySelector('#formulario');
+        const boton = document.querySelector('#boton');
+        const resultado = document.querySelector('#resultado');
+
+        const filtrar = ()=>{
+
+            resultado.innerHTML = '';
+
+            const texto = formulario.value.toLowerCase();
+
+            for(let producto of productos){
+              let nombre = producto.nombre.toLowerCase();
+              if(nombre.indexOf(texto) !== -1){
+                resultado.innerHTML += `
+                  <li>${producto.nombre} - Calorias por cada 100 gr: ${producto.valor}</li>
+                `
+              }
+            }
+            if(resultado.innerHTML === ''){
+              resultado.innerHTML += `
+                  <li>Lo sentimos el alimento no fue encontrado :( </li>
+                `
+            }
+
+        }
+
+        boton.addEventListener('click',filtrar)
+        //formulario.addEventListener('keyup',filtrar)
+        
+
+    </script>    
+</body>
+</html>
